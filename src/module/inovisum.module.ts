@@ -1,26 +1,21 @@
+import { JhispterHttpErrorInterceptor } from './interceptors/jhispter-http-error.interceptor';
+import { AuthJWTInterceptor } from './interceptors/auth-jwt.interceptor';
+import { LanguageService } from './services/language.service';
+import { AlertService } from './components/alert/alert.service';
+import { RadioService } from './services/radio.service';
+import { DelayResolver } from './router/delay.resolver';
+import { LoginService } from './services/login.service';
+import { ManagementService } from './services/management.service';
+import { RolesService } from './services/roles.service';
+import { NotificationService } from './components/notification/notification.service';
+import { PrincipalService } from './services/principal.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { DialogService } from './components/dialog/dialog.service';
+import { DENIED_ROUTES } from './components/framework-denied/denied.routes';
+import { AdminModule } from './admin/admin.module';
+import { MaterialModule } from './material.module';
 import { InovisumComponentsModule } from './components/inovisumcomponents.module';
-import { AdminModule, MaterialModule } from './';
-import {
-    RadioService,
-    AuthJWTInterceptor,
-    DelayResolver,
-    JhispterHttpErrorInterceptor,
-    LoginService,
-    PrincipalService,
-    RolesService,
-    LanguageService,
-    AuthGuard,
-    AlertService,
-    NotificationService,
-    DialogService,
-    ManagementService
-} from './';
-
-import {
-    DENIED_ROUTES
-} from './';
-
-import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { ObjectReducer } from './store/object.reducer';
 import { Ng2Webstorage } from 'ngx-webstorage';
@@ -34,11 +29,11 @@ export function previousUrlReducer(state: any, action: any) {
     return ObjectReducer.reducer('previousUrl')(state, action);
 }
 
-export const API_URL = 'http://192.168.2.112:8080/';
 @NgModule({
     imports: [
         // Importing material components
         MaterialModule,
+        HttpClientModule,
         // Importing inovisum components
         InovisumComponentsModule,
         Ng2Webstorage,

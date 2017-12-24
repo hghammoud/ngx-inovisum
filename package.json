@@ -25,7 +25,8 @@
   },
   "private": true,
   "scripts": {
-    "start": "node --max-old-space-size=4096 ./node_modules/.bin/gulp build",
+    "build": "node --max-old-space-size=4096 ./node_modules/.bin/gulp build",
+    "build:watch": "node --max-old-space-size=4096 ./node_modules/.bin/gulp build:watch",
     "test": " gulp test",
     "demo": " gulp build:demo",
     "check-travis": " travis-status --repo=hghammoud/ngx-inovisum --branch=master --fail-pending || echo 'Not yet passing'"
@@ -47,6 +48,7 @@
     "@ngx-translate/core": "^9.0.2",
     "@ngx-translate/http-loader": "^2.0.1",
     "angular-highcharts": "^5.2.0",
+    "flag-icon-css": "^2.9.0",
     "highcharts": "^6.0.4",
     "highcharts-more": "^0.1.2",
     "lodash": "^4.17.4",
@@ -84,6 +86,7 @@
     "gulp-git": "2.4.2",
     "gulp-hub": "0.8.0",
     "gulp-inline-ng2-template": "4.0.0",
+    "gulp-merge-json": "^1.2.0",
     "gulp-tslint": "8.1.1",
     "gulp-util": "3.0.8",
     "html-loader": "0.5.1",

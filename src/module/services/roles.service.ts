@@ -1,12 +1,11 @@
-import { API_URL } from './../inovisum.module';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class RolesService {
-
-    private resourceUrl = API_URL + 'api/users/authorities';
+    public API_URL = 'http://192.168.2.112:8080/';
+    private resourceUrl = this.API_URL + 'api/users/authorities';
 
     constructor(private http: HttpClient) {
     }

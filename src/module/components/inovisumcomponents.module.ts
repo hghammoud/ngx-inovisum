@@ -1,27 +1,22 @@
+import { LanguagePickerComponent } from './language-picker/language-picker.component';
+import { TableComponent } from './table/table.component';
+import { SigninComponent } from './sign-in/sign-in.component';
+import { DropdownItemComponent } from './dropdown/dropdown-item.component';
+import { AlertListenerComponent } from './alert/alert-listener.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
+import { DropDownTriggerDirective } from './dropdown/dropdown-trigger.directive';
+import { FrameworkNoContentComponent } from './framework-no-content/framework-no-content.component';
+import { FrameworkDeniedComponent } from './framework-denied/framework-denied.component';
+import { FrameworkBodyComponent } from './framework-body/framework-body.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { NotificationComponent } from './notification/notification.component';
+import { LeftMenuComponent } from './leftmenu/leftmenu.component';
+import { SelectComponent } from './select/select.component';
+import { TagComponent } from './tag/tag.component';
+import { ButtonComponent } from './button/button.component';
+import { AlertComponent } from './alert/alert.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './../material.module';
-import {
-    AlertComponent,
-    AlertListenerComponent,
-    AlertService,
-    ButtonComponent,
-    TagComponent,
-    DropdownComponent,
-    DropdownItemComponent,
-    SelectComponent,
-    LeftMenuComponent,
-    NotificationComponent,
-    NotificationService,
-    SigninComponent,
-    DialogComponent,
-    DialogService,
-    FrameworkBodyComponent,
-    FrameworkDeniedComponent,
-    FrameworkNoContentComponent,
-    TableComponent,
-    LanguagePickerComponent,
-    DropDownTriggerDirective,
-} from './';
 import { NgModule } from '@angular/core';
 import { LoadingModule } from 'ngx-loading';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';

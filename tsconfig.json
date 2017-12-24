@@ -7,11 +7,8 @@
     "inlineSources": true,
     "declaration": true,
     "experimentalDecorators": true,
-    "noEmitHelpers": true,
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "allowSyntheticDefaultImports": true,
-    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "stripInternal": true,
     "lib": [

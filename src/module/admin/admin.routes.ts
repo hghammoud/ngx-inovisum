@@ -1,9 +1,11 @@
+import { UsersComponent } from './users/users.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminComponent } from './admin.component';
 import { ApiComponent } from './api/api.component';
 import { AuditComponent } from './audit/audit.component';
 import { ConfigComponent } from './config/config.component';
 import { MetricsComponent } from './metrics/metrics.component';
 import { AuthGuard } from './../services/auth-guard.service';
-import { AdminComponent, UsersComponent, DashboardComponent } from './';
 import { Routes } from '@angular/router';
 
 export const ADMIN_ROUTES: Routes = [
@@ -29,14 +31,6 @@ export const ADMIN_ROUTES: Routes = [
         }
       },
       {
-        path: 'users',
-        component: UsersComponent,
-        pathMatch: 'full',
-        data: {
-          title: 'menu.button.users'
-        }
-      },
-      {
         path: 'metrics',
         component: MetricsComponent,
         pathMatch: 'full',
@@ -44,6 +38,14 @@ export const ADMIN_ROUTES: Routes = [
           title: 'menu.button.metrics'
         }
       },
+      // {
+      //   path: 'users',
+      //   component: UsersComponent,
+      //   pathMatch: 'full',
+      //   data: {
+      //     title: 'menu.button.users'
+      //   }
+      // },
       {
         path: 'configuration',
         component: ConfigComponent,

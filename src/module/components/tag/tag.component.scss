@@ -1,5 +1,5 @@
-@import '../../styles/colors';
-@import '../../styles/typo';
+@import '../../../styles/colors';
+@import '../../../styles/typo';
 .tag {
     @include caption();
     padding: 0 1.2rem;
