@@ -1,0 +1,38 @@
+{
+  "generator-ngx-library": {
+    "version": "5.4.0",
+    "authorName": "Hassan Hammoud",
+    "authorEmail": "hhammoud@inovisum.com",
+    "githubUsername": "hghammoud",
+    "githubRepoName": "ngx-inovisum",
+    "projectName": "ngx-inovisum",
+    "projectVersion": "0.0.1",
+    "projectDescription": "Angular library built to bootstrap jhisper backend",
+    "projectKeywords": [
+      "ng",
+      "ngx",
+      "angular",
+      "jhispter",
+      "library",
+      "inovisum"
+    ],
+    "ngVersion": "5.0.0",
+    "ngModules": [
+      "core",
+      "common",
+      "forms",
+      "http",
+      "compiler",
+      "router",
+      "platform-browser-dynamic",
+      "platform-browser"
+    ],
+    "otherDependencies": [],
+    "dependenciesRange": "^",
+    "ngPrefix": "ino",
+    "useGreenkeeper": false,
+    "useCompodoc": true,
+    "enforceNgGitCommitMsg": true,
+    "exclusions": []
+  }
+}
