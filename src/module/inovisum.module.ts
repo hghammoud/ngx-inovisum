@@ -28,7 +28,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
-import { ClickOutsideModule } from 'ng-click-outside';
+// import { ClickOutsideModule } from 'ng-click-outside';
 
 export function previousUrlReducer(state: any, action: any) {
     return ObjectReducer.reducer('previousUrl')(state, action);
@@ -42,7 +42,7 @@ export const API_URL = 'http://192.168.2.112:8080/';
         // Importing inovisum components
         InovisumComponentsModule,
         Ng2Webstorage,
-        ClickOutsideModule,
+        // ClickOutsideModule,
         // Importing admin components
         AdminModule,
         ToastrModule.forRoot(),
@@ -51,7 +51,7 @@ export const API_URL = 'http://192.168.2.112:8080/';
     ],
     exports: [
         ToastrModule,
-        ClickOutsideModule,
+        // ClickOutsideModule,
         MaterialModule,
         InovisumComponentsModule
     ],

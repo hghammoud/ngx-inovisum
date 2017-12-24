@@ -360,9 +360,6 @@ gulp.task('rollup-bundle', (cb) => {
       '@angular/router': 'ng.router',
       '@angular/platform-browser-dynamic': 'ng.platform-browser-dynamic',
       '@angular/platform-browser': 'ng.platform-browser',
-      '@angular/cdk': 'ng.cdk',
-      '@angular/material': 'ng.material',
-      '@angular/animation': 'ng.animation',
 
       // Rxjs dependencies
       'rxjs/Subject': 'Rx',
@@ -389,8 +386,21 @@ gulp.task('rollup-bundle', (cb) => {
       // Add any other dependency or peer dependency of your library here
       // This is required for UMD bundle users.
       'lodash': 'lodash',
-      'highcharts': 'highcharts',
       'ng-click-outside': 'ng-click-outside',
+      'highcharts': 'highcharts',
+      'highcharts-more': 'highcharts-more',
+      'angular-highcharts': 'angular-highcharts',
+      '@angular/material': 'ng.material',
+      '@angular/cdk': 'ng.cdk',
+      '@angular/flex-layout': 'ng.flex-layout',
+      '@angular/animation': 'ng.animation',
+      '@ngrx/store': '@ngrx/store',
+      '@ngx-translate/core': '@ngx-translate/core',
+      '@ngx-translate/http-loader': '@ngx-translate/http-loader',
+      'ngx-loading': 'ngx-loading',
+      'ngx-toastr': 'ngx-toastr',
+      'ngx-webstorage': 'ngx-webstorage',
+      'swagger-ui-dist': 'swagger-ui-dist'
       
     };
     const rollupBaseConfig = {
@@ -404,7 +414,11 @@ gulp.task('rollup-bundle', (cb) => {
         }),
         rollupSourcemaps(),
         rollupNodeResolve({ jsnext: true, module: true })
-      ]
+      ],
+      onwarn: function ( message ) {
+        if ( /external dependency/.test( message ) ) return;
+        // console.error( message );
+      }
     };
 
     // UMD bundle.
