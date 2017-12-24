@@ -385,6 +385,11 @@ gulp.task('rollup-bundle', (cb) => {
       // ATTENTION:
       // Add any other dependency or peer dependency of your library here
       // This is required for UMD bundle users.
+      'highcharts': 'highcharts',
+      'angular-highcharts': 'angular-highcharts',
+      '@angular/material': 'ng.material',
+      '@angular/cdk': 'ng.cdk',
+      '@angular/flex-layout': 'ng.flex-layout',
       
     };
     const rollupBaseConfig = {
@@ -398,7 +403,11 @@ gulp.task('rollup-bundle', (cb) => {
         }),
         rollupSourcemaps(),
         rollupNodeResolve({ jsnext: true, module: true })
-      ]
+      ],
+      onwarn: function ( message ) {
+        if ( /external dependency/.test( message ) ) return;
+        // console.error( message );
+      }
     };
 
     // UMD bundle.
