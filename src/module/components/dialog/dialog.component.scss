@@ -1,0 +1,12 @@
+@import '../../styles/colors';
+:host {
+    display: flex;
+    margin: -24px;
+    width: 30rem;
+    max-width: inherit;
+}
+
+::ng-deep.box-holder {
+    background-color: white;
+    border-top: 0.7rem solid $accent;
+}

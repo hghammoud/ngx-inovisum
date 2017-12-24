@@ -1,0 +1,25 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<ino-alert-listener [prefix]="'http:error'" [isToast]="true"></ino-alert-listener>
+<div class="action-bar" fxLayout="row" fxLayoutAlign="start center">
+    <div class="sectiontitle">{{'global.form.filter' | translate}}</div>
+    <mat-form-field fxFlex class="field-row" dividerColor="accent">
+        <input matInput placeholder="{{'global.form.filter.placeholder' | translate}}" (input)="filter($event.target.value)">
+    </mat-form-field>
+</div>
+<ng-container *ngFor="let key of keys(config); let i=index;">
+    <mat-expansion-panel [@enterAnimation] *ngIf="step === -1 || step === i" [expanded]="false" (opened)="setStep(i)" (closed)="setStep(-1)">
+        <mat-expansion-panel-header style="padding: 0 2rem;">
+            <div class="expantionTitle">{{key}}</div>
+        </mat-expansion-panel-header>
+        <div class="table">
+            <div fxLayout="row" class="configRow" *ngFor="let c of config[key]">
+                <div fxLayout="column" fxLayoutAlign="start start" style="font-weight: bold; min-width:40rem;">
+                    {{c.name}}
+                </div>
+                <div fxFlex>
+                    {{c.value}}
+                </div>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</ng-container>

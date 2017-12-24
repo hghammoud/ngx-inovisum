@@ -1,0 +1,69 @@
+<div class="admin_header" fxLayout="row">
+    <div class="menu_icon_container {{menuIconState}}" fxLayout="row" fxLayoutAlign="end center">
+        <div class="menu_icon" fxLayout="row" fxLayoutAlign="center center">
+            <button mat-icon-button color="accent" (click)="toggleMenu()">
+                <mat-icon *ngIf="menuIconState === 'closed'" aria-label="Open menu">menu</mat-icon>
+                <span *ngIf="menuIconState === 'slim'" aria-label="Open menu" class="mat-icon" role="img" aria-hidden="true"><img src="/assets/icons/menu_expand.png"></span>
+                <span *ngIf="menuIconState === 'open'"aria-label="Open menu" class="mat-icon" role="img" aria-hidden="true"><img src="/assets/icons/menu_collapse.png"></span>
+            </button>
+        </div>
+    </div>
+    <div fxlayout="row" fxLayoutAlign="start center">
+        <div class="pagetitle">{{getTitle()}}</div>
+    </div>
+    <div class="tabs" fxFlex></div>
+    <ino-language-picker></ino-language-picker>
+    <ino-button color="accent" [dropDownTriggerFor]="profileDropdown" [fillContainer]=true>
+        <mat-icon button-left-icon class="avatar">person</mat-icon>
+        <span button-right-icon class="material-icons arrow-icon">keyboard_arrow_down</span>
+    </ino-button>
+    <ino-dropdown #profileDropdown>
+        <ino-dropdown-item>
+            <span button-label>My profile</span>
+        </ino-dropdown-item>
+        <ino-dropdown-item (click)="logout()">
+            <span button-label>Logout</span>
+        </ino-dropdown-item>
+    </ino-dropdown>
+</div>
+<div class="admin_content" fxLayout="row" fxFlex>
+    <ino-leftmenu>
+        <div ino-leftmenu-divider></div>
+        <div ino-leftmenu-section> {{'menu.section.admin' | translate}} </div>
+        <div ino-leftmenu-item [routerLink]="['/admin/dashboard']" [routerLinkActive]="'active'">
+            <mat-icon icon aria-label="'menu.button.dashboard' | translate">dashboard</mat-icon>
+            <div label>{{'menu.button.dashboard' | translate}}</div>
+        </div>
+        <div ino-leftmenu-item [routerLink]="['/admin/users']" [routerLinkActive]="'active'">
+            <mat-icon icon aria-label="'menu.button.users' | translate">group</mat-icon>
+            <div label>{{'menu.button.users' | translate}}</div>
+        </div>
+        <div ino-leftmenu-item [routerLink]="['/admin/metrics']" [routerLinkActive]="'active'">
+            <mat-icon icon aria-label="'menu.button.metrics' | translate">multiline_chart</mat-icon>
+            <div label>{{'menu.button.metrics' | translate}}</div>
+        </div>
+        <div ino-leftmenu-item [routerLink]="['/admin/health']" [routerLinkActive]="'active'">
+            <mat-icon icon aria-label="'menu.button.health' | translate">favorite</mat-icon>
+            <div label>{{'menu.button.health' | translate}}</div>
+        </div>
+        <div ino-leftmenu-item [routerLink]="['/admin/configuration']" [routerLinkActive]="'active'">
+            <mat-icon icon aria-label="'menu.button.configuration' | translate">list</mat-icon>
+            <div label>{{'menu.button.configuration' | translate}}</div>
+        </div>
+        <div ino-leftmenu-item [routerLink]="['/admin/audit']" [routerLinkActive]="'active'">
+            <mat-icon icon aria-label="'menu.button.audit' | translate">notifications</mat-icon>
+            <div label>{{'menu.button.audit' | translate}}</div>
+        </div>
+        <div ino-leftmenu-item [routerLink]="['/admin/logs']" [routerLinkActive]="'active'">
+            <mat-icon icon aria-label="'menu.button.logs' | translate">library_books</mat-icon>
+            <div label>{{'menu.button.logs' | translate}}</div>
+        </div>
+        <div ino-leftmenu-item [routerLink]="['/admin/api']" [routerLinkActive]="'active'">
+            <mat-icon icon aria-label="'menu.button.api' | translate">developer_mode</mat-icon>
+            <div label>{{'menu.button.api' | translate}}</div>
+        </div>
+    </ino-leftmenu>
+    <div style="margin: 2rem;" fxFlex>
+        <router-outlet></router-outlet>
+    </div>
+</div>

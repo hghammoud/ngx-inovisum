@@ -1,0 +1,29 @@
+
+@import '../../../node_modules/ngx-toastr/toastr';
+@import 'material';
+.toast-title {
+    font-size: 1.5rem;
+}
+
+.toast-message {
+    font-size: 1.3rem;
+}
+
+.toast-top-center {
+    top: 6rem;
+    right: 0;
+    width: 100%;
+}
+
+.toast-success {
+  background-color: $success;
+}
+.toast-error {
+  background-color: $error;
+}
+.toast-info {
+  background-color: $info;
+}
+.toast-warning {
+  background-color: $warn;
+}

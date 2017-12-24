@@ -1,0 +1,45 @@
+@import '../../styles/colors';
+@import '../../styles/typo';
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    flex: 1 1 100%;
+    overflow: scroll;
+}
+
+::ng-deep.swagger-ui {
+    background-color: $white;
+    margin-top: -2rem;
+}
+
+::ng-deep.swagger-ui .topbar .download-url-wrapper {
+    flex: 1;
+}
+
+::ng-deep.swagger-ui .wrapper {
+    width: auto;
+}
+
+::ng-deep.swagger-ui .topbar {
+    display: none;
+    background-color: $white;
+    border-bottom: 1rem solid $lightgrey;
+    a span {
+        color: $grey;
+    }
+    a {
+        flex: none;
+    }
+}
+
+::ng-deep.swagger-ui .topbar .download-url-wrapper .download-url-button {
+    background-color: $accent;
+}
+
+::ng-deep.swagger-ui .topbar .download-url-wrapper input[type=text] {
+    border: 2px solid $accent;
+}

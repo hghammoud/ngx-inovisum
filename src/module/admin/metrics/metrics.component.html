@@ -1,0 +1,24 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<ino-alert-listener [prefix]="'http:error'" [isToast]="true"></ino-alert-listener>
+<div fxLayout="column" fxFlex>
+    <div class="widget-bar" fxLayout="row">
+        <div fxFlex="10%" class="widget"></div>
+        <div fxFlex [chart]="memoryChart" class="widget"></div>
+        <div fxFlex [chart]="threadsChart" class="widget"></div>
+        <div fxFlex [chart]="requestChart" class="widget"></div>
+        <div fxFlex="10%" class="widget"></div>
+    </div>
+    <div class="action-bar" fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex class="sectiontitle">{{'metrics.sections.stats'| translate}}</div>
+        <ino-button color="accent" [fillWidth]="true" (click)="loadMetrics()">
+            <mat-icon button-left-icon>refresh</mat-icon>
+            <span button-label>{{'metrics.button.refresh'| translate}}</span>
+        </ino-button>
+    </div>
+    <ng-template #numberTemplate let-cell="cell" let-row="row">
+        <div fxLayout="row" fxFlexFill fxLayoutAlign="start center">
+            {{row.data[cell.key] * 1000 | number:'1.0-0'}}
+        </div>
+    </ng-template>
+    <ino-table id="timersTable" [data]="timers" [columns]="columns" [isCompact]="true" [multipleSelect]=false [page]="page" (onSort)="sortPage($event)"></ino-table>
+</div>

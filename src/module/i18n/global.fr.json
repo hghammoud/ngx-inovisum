@@ -1,0 +1,52 @@
+{
+    "global": {
+        "language": "Langue",
+        "form": {
+            "username": "Nom d'utilisateur",
+            "username.placeholder": "Votre nom d'utilisateur",
+            "newpassword": "Nouveau mot de passe",
+            "newpassword.placeholder": "Nouveau mot de passe",
+            "confirmpassword": "Confirmation du nouveau mot de passe",
+            "confirmpassword.placeholder": "Confirmation du nouveau mot de passe",
+            "email": "Email",
+            "email.placeholder": "Votre email",
+            "button.load": "En cours",
+            "firstname": "Prénom",
+            "lastname": "Nom",
+            "status": "Status",
+            "profiles": "Profiles",
+            "created": "Crée",
+            "createdBy": "Crée par",
+            "modified": "Modifié",
+            "modifiedBy": "Modifié par",
+            "search": "Recherche",
+            "filter": "Filtre",
+            "filter.placeholder": "Pattern à filter"
+        },
+        "messages" :{
+            "validate":{
+                "required": "* Ce champs est requis",
+                "email": {
+                    "required": "Votre email est requis.",
+                    "minlength": "Votre email doit comporter au moins 5 caractères.",
+                    "maxlength": "Votre email ne doit pas comporter plus de 50 caractères.",
+                    "invalid": "Votre email n'est pas valide."
+                }
+            }
+        },
+        "error": {
+            "internalServerError": "Erreur interne du serveur",
+            "server.not.reachable": "Serveur inaccessible",
+            "server.not.reachable.msg": "Verifiez votre connexion internet",
+            "url.not.found": "Non trouvé",
+            "badrequest": "Mauvaise requête",
+            "unauthorized": "Non authorisé",
+            "NotNull": "Le champ {{fieldName}} ne peut pas être vide !",
+            "Size": "Le champ {{fieldName}} ne respecte pas les critères minimum et maximum !",
+            "userexists": "Login déjà utilisé !",
+            "emailexists": "Email déjà utilisé !",
+            "validation": "Erreur de validation"
+        }
+    },
+    "email was sent": "Email envoyé à {{email}}"
+}

@@ -1,0 +1,254 @@
+@import '../../../node_modules/@angular/material/_theming';
+@import 'colors';
+
+// Background palette for light themes.
+@function light-foreground($color) {
+        @return (
+        base:              $color,
+        divider:           rgba($color, 0.38),
+        dividers:          rgba($color, 0.38),
+        disabled:          rgba($color, 0.38),
+        disabled-button:   rgba($color, 0.38),
+        disabled-text:     rgba($color, 0.38),
+        hint-text:         rgba($color, 0.38),
+        secondary-text:    rgba($color, 0.54),
+        icon:              rgba($color, 0.54),
+        icons:             rgba($color, 0.54),
+        text:              rgba($color, 1),
+        slider-min:        rgba($color, 0.87),
+        slider-off:        rgba($color, 0.26),
+        slider-off-active: rgba($color, 0.38),
+    )
+};
+  
+  // Background palette for dark themes.
+  @function light-background($color) {
+    @return (
+    status-bar: map_get($color, 300),
+    app-bar:    map_get($color, 100),
+    background: map_get($color, 50),
+    hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+    card:       white,
+    dialog:     white,
+    disabled-button: $black-6-opacity,
+    raised-button: white,
+    focused-button: $black-6-opacity,
+    selected-button: map_get($color, 300),
+    selected-disabled-button: map_get($color, 400),
+    disabled-button-toggle: map_get($color, 200),
+    unselected-chip: map_get($color, 300),
+    disabled-list-option: map_get($color, 200),
+    )
+};
+
+@function typography-config(
+    $font-family:   'Proxima, Roboto, "Helvetica Neue", sans-serif',
+    $display-4:     mat-typography-level(112px, 112px, 300),
+    $display-3:     mat-typography-level(56px, 56px, 400),
+    $display-2:     mat-typography-level(45px, 48px, 400),
+    $display-1:     mat-typography-level(34px, 40px, 400),
+    $headline:      mat-typography-level(24px, 32px, 400),
+    $title:         mat-typography-level(20px, 32px, 500),
+    $subheading-2:  mat-typography-level(14px, 28px, 400),
+    $subheading-1:  mat-typography-level(15px, 24px, 400),
+    $body-2:        mat-typography-level(14px, 24px, 500),
+    $body-1:        mat-typography-level(14px, 20px, 400),
+    $caption:       mat-typography-level(12px, 20px, 400),
+    $button:        mat-typography-level(14px, 14px, bold),
+    // Line-height must be unit-less fraction of the font-size.
+    $input:         mat-typography-level(16px, 1.125, 400)
+  ) {
+  
+    // Declare an initial map with all of the levels.
+    $config: (
+      display-4:      $display-4,
+      display-3:      $display-3,
+      display-2:      $display-2,
+      display-1:      $display-1,
+      headline:       $headline,
+      title:          $title,
+      subheading-2:   $subheading-2,
+      subheading-1:   $subheading-1,
+      body-2:         $body-2,
+      body-1:         $body-1,
+      caption:        $caption,
+      button:         $button,
+      input:          $input,
+    );
+  
+    // Loop through the levels and set the `font-family` of the ones that don't have one to the base.
+    // Note that SASS can't modify maps in place, which means that we need to merge and re-assign.
+    @each $key, $level in $config {
+      @if map-get($level, font-family) == null {
+        $new-level: map-merge($level, (font-family: $font-family));
+        $config: map-merge($config, ($key: $new-level));
+      }
+    }
+  
+    // Add the base font family to the config.
+    @return map-merge($config, (font-family: $font-family));
+  }
+
+$typo-config: typography-config();
+@include mat-core($typo-config);
+
+$mat-primary: mat-palette($md-primary);
+$mat-accent:  mat-palette($md-accent, 500, A200, 500);
+$mat-warn:    mat-palette($mat-red, A400);
+$mat-info:    mat-palette($mat-red, A400);
+$mat-success:    mat-palette($mat-red, A400);
+$mat-error:    mat-palette($mat-red, A400);
+$mat-warning:    mat-palette($mat-red, A400);
+
+$light-foreground: light-foreground(map_get($md-primary, 500));
+$light-background: light-background($mat-grey);
+
+@function custom-mat-light-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+    @return (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+      is-dark: false,
+      foreground: $light-foreground,
+      background: $light-background
+    );
+  }
+
+
+$theme: custom-mat-light-theme($mat-primary, $mat-accent, $mat-warn);
+@include angular-material-theme($theme);
+
+
+// Applies a focus style to an md-button element for each of the supported palettes.
+@mixin _bs-mat-button-focus-color() {
+
+  &.mat-info .mat-button-focus-overlay {
+    background-color: rgba($info, 0.12);
+  }
+
+  &.mat-success .mat-button-focus-overlay {
+    background-color: rgba($success, 0.12);
+  }
+
+  &.mat-error .mat-button-focus-overlay {
+    background-color: rgba($error, 0.12);
+  }
+  &.mat-warning .mat-button-focus-overlay {
+    background-color:  rgba($warn, 0.12);
+  }
+
+  &[disabled] .mat-button-focus-overlay {
+    background-color: transparent;
+  }
+}
+
+@mixin _bs-mat-button-ripple-color($opacity: 0.2) {
+  &.mat-info .mat-ripple-element {
+    background-color: rgba($info, $opacity);
+  }
+
+  &.mat-success .mat-ripple-element {
+    background-color: rgba($success, $opacity);
+  }
+
+  &.mat-error .mat-ripple-element {
+    background-color: rgba($error, $opacity);
+  }
+  &.mat-warning .mat-ripple-element {
+    background-color: rgba($warn, $opacity);
+  }
+}
+
+// Applies a property to an md-button element for each of the supported palettes.
+@mixin _bs-mat-button-theme-color($theme, $property, $color: 'default') {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  &.mat-info {
+    #{$property}: $info;
+  }
+  &.mat-success {
+    #{$property}: $success;
+  }
+  &.mat-error {
+    #{$property}: $error;
+  }
+  &.mat-warning {
+    #{$property}: $warn;
+  }
+
+  &.mat-info, &.mat-success, &.mat-error, &.mat-warning,  &[disabled] {
+    &[disabled] {
+      $palette: if($property == 'color', $foreground, $background);
+      #{$property}: mat-color($palette, disabled-button);
+    }
+  }
+}
+
+@mixin bs-mat-button-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .mat-button, .mat-icon-button {
+    background: transparent;
+
+    @include _bs-mat-button-focus-color();
+    @include _bs-mat-button-theme-color($theme, 'color');
+  }
+
+  .mat-raised-button, .mat-fab, .mat-mini-fab {
+    // Default properties when not using any [color] value.
+    color: mat-color($foreground, text);
+    background-color: mat-color($background, raised-button);
+
+    @include _bs-mat-button-theme-color($theme, 'color', default-contrast);
+    @include _bs-mat-button-theme-color($theme, 'background-color');
+
+    // Add ripple effect with contrast color to buttons that don't have a focus overlay.
+    @include _bs-mat-button-ripple-color();
+  }
+
+  // Add ripple effect with default color to flat buttons, which also have a focus overlay.
+  .mat-button {
+    @include _bs-mat-button-ripple-color(0.1);
+  }
+
+  // Add ripple effect with default color to the icon button. Ripple color needs to be stronger
+  // since the icon button doesn't have a focus overlay.
+  .mat-icon-button {
+    @include _bs-mat-button-ripple-color();
+  }
+}
+
+@include bs-mat-button-theme($theme);
+
+@mixin mat-select-typography($config) {
+  $trigger-font-size: mat-font-size($config, subheading-2);
+
+  .mat-select {
+    // Reserve enough space for the floating placeholder.
+    padding-top: 9.5px;
+    font-family: mat-font-family($config);
+  }
+
+  .mat-select-trigger {
+    font-size: $trigger-font-size;
+  }
+}
+@include mat-select-typography($typo-config); 
+
+.mat-option {
+  height: 40px !important;
+  line-height: 40px !important;
+}
+
+.mat-pseudo-checkbox {
+  width: 18px !important;
+  height: 18px !important;
+}
+.mat-pseudo-checkbox-checked::after {
+  top: 4px !important;
+  left: 3px !important;
+  width: 10px !important;
+  height: 5px !important;
+}

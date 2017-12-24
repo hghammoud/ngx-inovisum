@@ -1,0 +1,70 @@
+@import '../../styles/colors';
+@import '../../styles/typo';
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    flex: 1 1 100%;
+}
+
+mat-expansion-panel {
+    background-color: $white;
+    box-shadow: none !important; // margin-bottom: 1rem;
+    &.mat-expanded {
+        flex: 1 1 100%;
+        box-sizing: border-box;
+        flex-direction: column;
+        display: flex;
+        max-height: 100%;
+    }
+     ::ng-deep.mat-expanded {
+        &.mat-expansion-panel-content {
+            flex: 1;
+            overflow: scroll;
+        }
+    }
+}
+
+mat-expansion-panel-header {
+    height: 4rem !important;
+    border-bottom: 1px solid $lightergrey;
+    transition: all 0.5s ease-in-out;
+    &.mat-expanded {
+        height: 6.4rem !important;
+    }
+}
+
+.table {
+    background-color: $white;
+}
+
+.configRow {
+    padding-left: 0.6rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid $lightergrey;
+    color: $primary;
+    display: flex;
+    align-items: center;
+    min-height: 4rem;
+    div {
+        margin: 0 0.5rem;
+        word-break: break-all;
+    }
+}
+
+.action-bar {
+    background-color: $white;
+    min-height: 5.6rem;
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+}
+.expantionTitle {
+    padding: 0 1.5rem;
+    @include body;
+    color: $grey;
+    text-transform: uppercase;
+    width: 100%;
+}

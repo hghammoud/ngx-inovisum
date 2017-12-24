@@ -1,0 +1,22 @@
+{
+    "users": {
+        "button": {
+            "new": "Crée un utilisateur",
+            "resetpassword": "Reinitaliser le mot de passe",
+            "deactivate": "Désactivater",
+            "activate": "Activater"
+        },
+        "form": {
+            "editmode": "Mode d'édition"
+        },
+        "status":{
+            "activated": "Activaté",
+            "deactivated": "Désactivaté"
+        },
+        "message": {
+            "activated": "Le compte de l'utilisateur '{{username}}' est activaté",
+            "deactivated": "Le compte de l'utilisateur '{{username}}' est desactivaté",
+            "saved": "Les changements au compte de l'utilisateur '{{username}}' sont sauveguardés"
+        }
+    }
+}

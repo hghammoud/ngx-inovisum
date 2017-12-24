@@ -1,0 +1,30 @@
+@import 'material';
+@import 'flags';
+@import 'spinner';
+@import 'notification';
+@import 'typo';
+@import '../../../node_modules/swagger-ui-dist/swagger-ui';
+
+*:not(tspan) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @include body();
+  }
+
+  body {
+      @include font();
+  }
+
+  tspan {
+    @include font();
+  }
+
+  .sectiontitle {
+    height: 3.4rem;
+    width: 26rem;
+    padding: 0 1.5rem;
+    @include h5;
+    line-height: 3.4rem;
+    color: $grey;
+    text-transform: uppercase;
+}

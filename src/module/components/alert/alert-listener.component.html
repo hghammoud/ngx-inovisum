@@ -1,0 +1,4 @@
+<div fxFlex fxLayout="column" *ngIf="!isToast">
+    <ino-alert *ngFor="let alert of alerts" [type]="alert.type" [timeout]="alert.timeout" [title]="alert.title" [message]="alert.message" [removable]="true" (onRemove)="remove($event)">
+    </ino-alert>
+</div>

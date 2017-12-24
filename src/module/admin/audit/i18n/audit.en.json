@@ -1,0 +1,8 @@
+{
+    "config": {
+        "sections":{
+            "systemProperties": "System properties",
+            "springConfig": "Spring configuration"
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "metrics": {
+        "fields": {
+            "name": "Nom du service",
+            "count": "Total",
+            "mean": "Médian",
+            "min": "Min",
+            "max": "Max",
+            "p50": "p50",
+            "p75": "p75",
+            "p95": "p95",
+            "p99": "p99"
+        },
+        "sections":{
+            "stats": "Statistiques des services (temps en millisecondes)"
+        },
+        "button": {
+            "refresh": "Rafraîchir"
+        },
+        "chart":{
+            "memory": {
+                "title": "Mémoire",
+                "used": "Utilisée",
+                "unused": "Non utilisée",
+                "heap": "Heap",
+                "nonheap": "Non Heap"
+            },
+            "threads": {
+                "title": "Threads",
+                "runnable": "Exécutable",
+                "timed": "Temps d'attente",
+                "waiting": "En attente",
+                "blocked": "Bloqué"
+            },
+            "requests": {
+                "title": "Requêtes",
+                "ok": "OK",
+                "notfound": "Non trouvé",
+                "servererror": "Erreur serveur",
+                "tooltip": "{{value}} requêtes"
+            }
+        }
+    }
+}

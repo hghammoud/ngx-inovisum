@@ -1,0 +1,22 @@
+{
+    "users": {
+        "button": {
+            "new": "Create user",
+            "resetpassword": "Reset password",
+            "deactivate": "Deactivate",
+            "activate": "Activate"
+        },
+        "form": {
+            "editmode": "Edition mode"
+        },
+        "status":{
+            "activated": "Activated",
+            "deactivated": "Deactivated"
+        },
+        "message": {
+            "activated": "User account '{{username}}' has been activated",
+            "deactivated": "User account '{{username}}' has been deactivated",
+            "saved": "Changed to User account '{{username}}' has been saved"
+        }
+    }
+}

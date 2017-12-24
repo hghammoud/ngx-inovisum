@@ -1,0 +1,47 @@
+@import '../../styles/colors';
+@import '../../styles/typo';
+
+:host{
+    display: flex;
+    flex: 1 0 auto;
+    width: 100%;
+    min-width: 100%;
+}
+.counter {
+    position: absolute;
+    top: 7px;
+    right: -3px;
+    .mat-progress-spinner {
+        width: 3rem;
+        height: 3rem
+    }
+}
+
+.container {
+    font-weight: $font-bold;
+    padding: 1rem;
+    // padding-right: 4rem;
+    border-radius: 0.3rem;
+    margin: 0.5rem 0;
+    position: relative;
+    &.error {
+        background-color: $error;
+        color: $white;
+    }
+    &.warning {
+        background-color: $warn;
+        color: $white;
+    }
+    .message {
+        font-weight: $font-normal;
+        margin: 0.5rem 0;
+    }
+}
+
+.toast-close-button{
+    width: 2rem;
+    top: -0.1em;
+    right:1rem;
+    font-weight: 200;
+    font-size: 2.5rem;
+}

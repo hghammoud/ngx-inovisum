@@ -1,0 +1,1 @@
+export * from './leftmenu.component';

@@ -1,0 +1,30 @@
+<!-- <mat-form-field color="accent" [dropDownTriggerFor]="selectDropdown" xOrigin="start" [overTrigger]="true" style="width:100%">
+    <input class="selectInput" matInput placeholder="{{placeholder}}" [readonly]="true" [value]="triggerValue">
+</mat-form-field>
+<ino-dropdown #selectDropdown [showArrow]=false animationOrigin="top left" [closeOnClick]="!multiple">
+    <ng-content></ng-content>
+</ino-dropdown> -->
+
+<div cdk-overlay-origin class="mat-select-trigger" aria-hidden="true" (click)="toggle()" #origin="cdkOverlayOrigin" #trigger>
+    <mat-form-field color="accent" class="mat-select-value" style="width:100%">
+        <input class="selectInput" matInput placeholder="{{placeholder || '\u00A0'}}" [readonly]="true" [value]="triggerValue">
+    </mat-form-field>
+
+    <div class="mat-select-arrow-wrapper">
+        <div class="mat-select-arrow"></div>
+    </div>
+</div>
+
+<ng-template cdk-connected-overlay hasBackdrop backdropClass="cdk-overlay-transparent-backdrop" [scrollStrategy]="_scrollStrategy"
+    [origin]="origin" [open]="panelOpen" [positions]="cdkpositions" [minWidth]="_triggerRect?.width"  [offsetY]="_offsetY" (backdropClick)="close()"
+    (attach)="_onAttached()" (detach)="close()">
+
+    <div #panel class="mat-select-panel {{ _getPanelTheme() }}" [ngClass]="panelClass" [@transformPanel]="multiple ? 'showing-multiple' : 'showing'"
+        (@transformPanel.done)="_onPanelDone()" [style.transformOrigin]="_transformOrigin" [class.mat-select-panel-done-animating]="_panelDoneAnimating"
+        [style.font-size.px]="_triggerFontSize">
+
+        <div class="mat-select-content" [@fadeInContent]="'showing'" (@fadeInContent.done)="_onFadeInDone()">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</ng-template>

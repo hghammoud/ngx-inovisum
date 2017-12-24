@@ -1,0 +1,6 @@
+<ng-template #dropDown>
+    <div class="dropdown" [@openDropDown]="{value: state, params: {origin: animationOrigin}}" (@openDropDown.done)="onAnimationDone($event)" (click)="closeDropDown()" fxLayout="column">
+        <div class="arrow" *ngIf="showArrow"></div>
+        <ng-content></ng-content>
+    </div>
+</ng-template>

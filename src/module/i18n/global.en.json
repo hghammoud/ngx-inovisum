@@ -1,0 +1,52 @@
+{
+    "global": {
+        "language": "Language",
+        "form": {
+            "username": "Username",
+            "username.placeholder": "Your username",
+            "newpassword": "New password",
+            "newpassword.placeholder": "New password",
+            "confirmpassword": "New password confirmation",
+            "confirmpassword.placeholder": "Confirm the new password",
+            "email": "Email",
+            "email.placeholder": "Your email",
+            "button.load": "In progress",
+            "firstname": "Firstname",
+            "lastname": "Lastname",
+            "status": "Status",
+            "profiles": "Profiles",
+            "created": "Created",
+            "createdBy": "Created by",
+            "modified": "Modified",
+            "modifiedBy": "Modified by",
+            "search": "Search",
+            "filter": "Filter",
+            "filter.placeholder": "Filter pattern"
+        },
+        "messages" :{
+            "validate":{
+                "required": "* This field is required",
+                "email": {
+                    "required": "Your email is required.",
+                    "invalid": "Your email is invalid.",
+                    "minlength": "Your email is required to be at least 5 characters.",
+                    "maxlength": "Your email cannot be longer than 50 characters."
+                }
+            }
+        },
+        "error": {
+            "internalServerError": "Internal server error",
+            "server.not.reachable": "Server not reachable",
+            "server.not.reachable.msg": "Please verify your internet connection",
+            "url.not.found": "Not found",
+            "badrequest": "Bad request",
+            "unauthorized": "Unauthorized",
+            "NotNull": "Field {{ fieldName }} cannot be empty!",
+            "Size": "Field {{ fieldName }} does not meet min/max size requirements!",
+            "userexists": "Login name already used!",
+            "emailexists": "Email is already in use!",
+            "validation": "Validation error"
+        }
+    },
+    "email was sent": "Email was sent to {{email}}"
+}

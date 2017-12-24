@@ -1,0 +1,21 @@
+{
+    "signin": {
+        "title": "Sign in",
+        "forgottitle": "Reset password",
+        "form": {
+            "password": "Password",
+            "password.placeholder": "Your password",
+            "rememberme": "Remember me",
+            "button.signin": "Sign in",
+            "button.reset": "Reset password",
+            "cancel": "Cancel",
+            "forgot":  "Did you forget your password?"
+        },
+        "messages": {
+            "error": {
+                "authentication": "<strong>Failed to sign in!</strong> Please check your credentials and try again."
+            }
+        }
+    },
+    "email address not registered": "email address not registered"
+}

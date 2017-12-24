@@ -1,0 +1,25 @@
+@import '../../styles/colors';
+@import '../../styles/typo';
+.dropdown {
+    background-color: $white;
+    border: 1px solid $lightgrey;
+    position: relative;
+    right: 1rem;
+    left: 0rem;
+    z-index: 1;
+    /* Combined Shape: */
+    box-shadow: 0 0 0 1px rgba(240, 240, 240, 0.14);
+}
+
+.arrow {
+    height: 8px;
+    width: 8px;
+    border: 1px solid $lightgrey;
+    border-width: 1px 0px 0px 1px;
+    transform: rotate(45deg);
+    background-color: $white;
+    position: absolute;
+    display: block;
+    right: 1rem;
+    top: -5px;
+}

@@ -1,0 +1,122 @@
+//---- Colors
+$md-primary: (
+    50 : #e6e7e9,
+    100 : #c0c3c9,
+    200 : #969ca5,
+    300 : #6b7480,
+    400 : #4c5665,
+    500 : #2c384a,
+    600 : #273243,
+    700 : #212b3a,
+    800 : #1b2432,
+    900 : #101722,
+    A100 : #649cff,
+    A200 : #317bff,
+    A400 : #005afd,
+    A700 : #0051e4,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-accent: (
+    50 : #e4f3fd,
+    100 : #bce0fb,
+    200 : #90cbf8,
+    300 : #64b6f5,
+    400 : #42a7f2,
+    500 : #2197f0,
+    600 : #1d8fee,
+    700 : #1884ec,
+    800 : #147ae9,
+    900 : #0b69e5,
+    A100 : #ffffff,
+    A200 : #dceaff,
+    A400 : #a9caff,
+    A700 : #90baff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$md-grey: (
+    50 : #eaecee,
+    100 : #cbd0d5,
+    200 : #a8b0b9,
+    300 : #85909d,
+    400 : #6b7988,
+    500 : #516173,
+    600 : #4a596b,
+    700 : #404f60,
+    800 : #374556,
+    900 : #273343,
+);
+
+@function accent($shade, $opacity: 1) {
+    @return (
+        rgba(map-get($md-accent, $shade), $opacity)
+    );
+}
+@function primary($shade, $opacity: 1) {
+    @return (
+      rgba(map-get($md-primary, $shade), $opacity)
+    );
+}
+@function grey($shade, $opacity: 1) {
+    @return (
+      rgba(map-get($md-grey, $shade), $opacity)
+    );
+}
+  
+
+//Base colors
+$white: #FDFDFD;
+$black: #273142;
+$realwhite: #FFFFFF;
+$realblack: #000000;
+$grey: #9A9FA8;
+$lightgrey: #EFF3F6;
+$lightergrey: #F2F2F2;
+
+//Material
+$accent: accent(500);
+$primary: primary(500);
+$mdgrey: grey(500);
+
+//Bootstrap
+$bsprimary: #0B73C1;
+$info: #2299F1;
+$success: #46B6B3;
+$error: #F85359;
+$warn: #F7981C;
+
+//Gradient
+$gradient-primary: linear-gradient(-1deg, #1991EB 2%, #2DA1F8 98%);
+
+

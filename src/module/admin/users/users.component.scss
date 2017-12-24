@@ -1,0 +1,79 @@
+@import '../../styles/colors';
+@import '../../styles/typo';
+:host {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+ino-table {
+    background-color: $white;
+}
+
+.table-action-bar {
+    background-color: $white;
+    min-height: 5.6rem;
+    padding: 0 2rem;
+}
+
+.status_circle {
+    border-radius: 50%;
+    height: 0.8rem;
+    width: 0.8rem;
+    margin: 0 0.8rem 0 0;
+    border: 0.2rem solid $accent;
+    &.activated {
+        border-color: $success;
+    }
+    &.deactivated {
+        border-color: $warn;
+    }
+}
+
+.editRow {
+    height: 20rem;
+    border-left: 0.4rem solid $accent;
+    border-bottom: 1px solid $lightergrey;
+    position: relative;
+    .title {
+        @include caption();
+        font-weight: $font-semibold;
+        color: $grey;
+        transform: rotate(-90deg);
+        margin-left: -2.5rem;
+        margin-top: 4.5rem;
+        position: absolute;
+    }
+    .actions_column {
+        margin: 2rem;
+    }
+    .actions_column_divider {
+        border-right: 1px solid $lightergrey;
+        margin: 2rem 0;
+    }
+    .userDetails {
+        margin: 2rem 4rem;
+        .label {
+            @include caption();
+            text-transform: capitalize;
+            font-weight: $font-semibold;
+            color: $grey;
+            line-height: 1.2rem;
+        }
+        .value {
+            @include body();
+            color: $primary;
+            font-weight: $font-normal;
+            text-align: right;
+        }
+    }
+    .userEditableDetails {
+        margin: 2rem 2rem;
+        .userInput {
+            width: 100%;
+        }
+    }
+    .saveActionBar {
+        margin: 2rem 2rem;
+    }
+}

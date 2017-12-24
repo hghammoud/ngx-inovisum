@@ -1,0 +1,165 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div fxLayout="column" fxFlex>
+    <ino-alert-listener [prefix]="'http:error'" [isToast]="true"></ino-alert-listener>
+    <div class="table-action-bar" fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex></div>
+        <ino-button color="accent">
+            <mat-icon button-left-icon>add</mat-icon>
+            <span button-label>{{'users.button.new' | translate}}</span>
+        </ino-button>
+    </div>
+    <ng-template #languageTemplate let-cell="cell" let-row="row">
+        <div fxLayout="row" fxFlexFill fxLayoutAlign="center center">
+            <span button-left-icon class="flag-icon flag-icon-{{getIcon(row.data[cell.key])}} flag-icon-squared"></span>
+        </div>
+    </ng-template>
+    <ng-template #actionTemplate let-cell="cell" let-row="row">
+        <div fxLayout="row" fxFlexFill fxLayoutAlign="center center">
+            <ino-button color="accent" [isIconButton]=true [dropDownTriggerFor]="actionDropdown" [fillContainer]=true>
+                <mat-icon button-icon>more_vert</mat-icon>
+            </ino-button>
+            <ino-dropdown #actionDropdown>
+                <ino-dropdown-item (click)="showEditTemplate(row)">
+                    <span button-left-icon></span>
+                    <span button-label>Edit</span>
+                </ino-dropdown-item>
+            </ino-dropdown>
+        </div>
+    </ng-template>
+    <ng-template #profilesTemplate let-cell="cell" let-row="row">
+        <div fxLayout="row" fxFlexFill fxLayoutAlign="start center">
+            <ng-container *ngFor="let profile of row.data[cell.key]">
+                <ino-tag>{{profile}}</ino-tag>
+            </ng-container>
+        </div>
+    </ng-template>
+    <ng-template #statusTemplate let-cell="cell" let-row="row">
+        <div fxLayout="row" *ngIf="row.data[cell.key]" fxFlexFill fxLayoutAlign="start center">
+            <span class="status_circle activated"></span>
+            <span>{{'users.status.activated' | translate}}</span>
+        </div>
+        <div fxLayout="row" *ngIf="!row.data[cell.key]" fxFlexFill fxLayoutAlign="start center">
+            <span class="status_circle deactivated"></span>
+            <span>{{'users.status.deactivated' | translate}}</span>
+        </div>
+    </ng-template>
+    <ng-template #editTemplate let-row="row">
+        <div class="editRow">
+            <form [formGroup]="userForm" fxLaout="row" fxFlexFill>
+                <div fxFlex="2rem">
+                    <div class="title">{{'users.form.editmode' | translate}}</div>
+                </div>
+                <div fxFlex="20rem" fxFlexOffset="2rem" class="actions_column">
+                    <ino-button color="accent" [fillWidth]="true" [wrap]="true" (click)="resetPasswordInit(row.data['email'])" *ngIf="!userForm.dirty">
+                        <mat-icon button-left-icon>settings_backup_restore</mat-icon>
+                        <span button-label>{{'users.button.resetpassword' | translate}}</span>
+                    </ino-button>
+                    <ino-button *ngIf="row.data['activated'] && !userForm.dirty" color="warning" [fillWidth]="true" [wrap]="true" (click)="deactivateUser(row.data)">
+                        <mat-icon button-left-icon>not_interested</mat-icon>
+                        <span button-label>{{'users.button.deactivate' | translate}}</span>
+                    </ino-button>
+                    <ino-button *ngIf="!row.data['activated'] && !userForm.dirty" color="success" [fillWidth]="true" [wrap]="true" (click)="activateUser(row.data)">
+                        <mat-icon button-left-icon>check</mat-icon>
+                        <span button-label>{{'users.button.activate' | translate}}</span>
+                    </ino-button>
+                    <ino-button color="accent" [fillWidth]="true" (click)="saveUser(row.data)" [disabled]="!userForm.valid" *ngIf="userForm.dirty">
+                        <mat-icon button-left-icon>done</mat-icon>
+                        <span button-label>{{'global.button.confirm' | translate}}</span>
+                    </ino-button>
+                    <ino-button color="error" [fillWidth]="true" (click)="cancel()" *ngIf="userForm.dirty">
+                        <mat-icon button-left-icon>cancel</mat-icon>
+                        <span button-label>{{'global.button.cancel' | translate}}</span>
+                    </ino-button>
+                </div>
+                <div fxFlex="0.1rem" fxFlexOffset="2rem" class="actions_column_divider"></div>
+                <div fxFlex="20rem" fxLayout="column" class="userDetails">
+                    <div fxFlex fxLaout="row">
+                        <div fxFlex class="label" fxLayoutAlign="start center">{{'global.model.user.username' | translate}}</div>
+                        <div fxFlex class="value" fxLayoutAlign="start center">{{row.data['login']}}</div>
+                    </div>
+                    <div fxFlex fxLaout="row">
+                        <div fxFlex class="label" fxLayoutAlign="start center">{{'global.model.user.language' | translate}}</div>
+                        <div fxFlex class="value" fxLayoutAlign="start center">
+                            <span button-left-icon class="flag-icon flag-icon-{{getIcon(row.data['langKey'])}} flag-icon-squared"></span>
+                        </div>
+                    </div>
+                    <div fxFlex fxLaout="row">
+                        <div fxFlex class="label" fxLayoutAlign="start center">{{'global.model.user.status' | translate}}</div>
+                        <div fxFlex class="value" *ngIf="row.data['activated']" fxLayoutAlign="start center"> {{'users.status.activated' | translate}} </div>
+                        <div fxFlex class="value" *ngIf="!row.data['activated']" fxLayoutAlign="start center"> {{'users.status.deactivated' | translate}} </div>
+                    </div>
+                    <div fxFlex fxLaout="row"> </div>
+                    <div fxFlex fxLaout="row">
+                        <div fxFlex class="label" fxLayoutAlign="start center">{{'global.model.createdDate' | translate}}</div>
+                        <div fxFlex class="value" fxLayoutAlign="start center">{{row.data['createdDate'] | date: 'dd/MM/yy'}}</div>
+                    </div>
+                    <div fxFlex fxLaout="row">
+                        <div fxFlex class="label" fxLayoutAlign="start center">{{'global.model.createdBy' | translate}}</div>
+                        <div fxFlex class="value" fxLayoutAlign="start center">{{row.data['createdBy']}}</div>
+                    </div>
+                    <div fxFlex fxLaout="row">
+                        <div fxFlex class="label" fxLayoutAlign="start center">{{'global.model.lastModified' | translate}}</div>
+                        <div fxFlex class="value" fxLayoutAlign="start center">{{row.data['lastModifiedDate'] | date: 'dd/MM/yy'}}</div>
+                    </div>
+                    <div fxFlex fxLaout="row">
+                        <div fxFlex class="label" fxLayoutAlign="start center">{{'global.model.lastModifiedBy' | translate}}</div>
+                        <div fxFlex class="value" fxLayoutAlign="start center">{{row.data['lastModifiedBy']}}</div>
+                    </div>
+                </div>
+                <div fxFlex fxLayout="column">
+                    <div fxFlex fxLayout="row">
+                        <div fxFlex fxLayout="column" class="userEditableDetails" fxLayoutAlign="start start">
+                            <mat-form-field color="accent" class="userInput">
+                                <input matInput placeholder="{{'global.model.user.firstname' | translate}}" formControlName="firstName">
+                            </mat-form-field>
+                            <mat-form-field color="accent" class="userInput">
+                                <input matInput placeholder="{{'global.model.user.lastname' | translate}}" formControlName="lastName">
+                            </mat-form-field>
+                            <mat-form-field color="accent" class="userInput">
+                                <input matInput placeholder="{{'global.model.user.email' | translate}}" formControlName="email">
+                                <mat-error *ngIf="userForm.controls.email.hasError('required')">
+                                    <span [innerHTML]="'global.messages.validate.required' | translate"> Required</span>
+                                </mat-error>
+                                <mat-error *ngIf="userForm.controls.email.hasError('email')">
+                                    <span [innerHTML]="'global.messages.validate.email.invalid' | translate"> Email format</span>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex fxLayout="column" class="userEditableDetails" fxLayoutAlign="start start">
+                            <ino-select color="accent" class="userInput" [placeholder]="'global.model.user.autorities' | translate" [multiple]=true formControlName="authorities">
+                                <mat-option *ngFor="let role of rolesList" [value]="role">
+                                    {{role}}
+                                </mat-option>
+                            </ino-select>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div fxFlex="0.1rem" class="actions_column_divider"></div>
+                <div fxFlex="20rem" class="actions_column">
+                    <ino-button color="accent" [fillWidth]="true" [wrap]="true" (click)="resetPasswordInit(row.data['email'])">
+                        <mat-icon button-left-icon>settings_backup_restore</mat-icon>
+                        <span button-label>{{'users.button.resetpassword' | translate}}</span>
+                    </ino-button>
+                    <ino-button *ngIf="row.data['activated']" color="warning" [fillWidth]="true" [wrap]="true" (click)="deactivateUser(row.data)">
+                        <mat-icon button-left-icon>not_interested</mat-icon>
+                        <span button-label>{{'users.button.deactivate' | translate}}</span>
+                    </ino-button>
+                    <ino-button *ngIf="!row.data['activated']" color="success" [fillWidth]="true" [wrap]="true" (click)="activateUser(row.data)">
+                        <mat-icon button-left-icon>check</mat-icon>
+                        <span button-label>{{'users.button.activate' | translate}}</span>
+                    </ino-button>
+                    <ino-button color="accent" [fillWidth]="true" (click)="saveUser(row.data)" [disabled]="!userForm.valid" *ngIf="userForm.dirty">
+                        <mat-icon button-left-icon>done</mat-icon>
+                        <span button-label>{{'global.button.confirm' | translate}}</span>
+                    </ino-button>
+                    <ino-button color="error" [fillWidth]="true" (click)="hideEditTemplate()" *ngIf="userForm.dirty">
+                        <mat-icon button-left-icon>cancel</mat-icon>
+                        <span button-label>{{'global.button.cancel' | translate}}</span>
+                    </ino-button>
+                </div> -->
+            </form>
+        </div>
+    </ng-template>
+    <ino-table id="userstable" [data]="users" [columns]="columns" [isCompact]="true" [multipleSelect]=false [page]="page" [showRowTemplate]="showRowTemplate"
+        [hideRowTemplate]="hideRowTemplate" (onPageChange)="loadPage($event)" (onSort)="sortPage($event)" (onClick)="showEditTemplate($event)"></ino-table>
+</div>

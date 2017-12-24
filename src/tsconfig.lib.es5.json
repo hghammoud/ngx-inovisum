@@ -3,8 +3,8 @@
   "compilerOptions": {
     "target": "es5",
     "outDir": "../tmp/lib-es5/",
-    "baseUrl": "",
-    "types": []
+    "baseUrl": ""
+    // "types": []
   },
   "files": [
     "./index.ts"

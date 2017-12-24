@@ -1,0 +1,262 @@
+@import '../../styles/colors';
+@import '../../styles/typo';
+$normalHeight: 4.8rem;
+$compactHeight: 3rem;
+:host {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: block;
+    overflow: hidden;
+    flex: 1 1 100%;
+}
+
+.outer-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.inner-container {
+    flex: 0 1 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.scroll-container {
+    position: relative;
+    min-height: 0;
+}
+
+.table-body {
+    width: inherit;
+    overflow-y: scroll;
+}
+
+.table-body:hover::-webkit-scrollbar-thumb {
+    overflow: visible;
+    border-radius: 4px;
+    background-color: rgba(119, 141, 171, 0.20);
+}
+
+.table-body::-webkit-scrollbar {
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color: transparent;
+}
+
+.table-body::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.table-body::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.table-header {
+    width: 100%;
+    overflow: hidden;
+    min-height: 5.6rem;
+    background-color: $lightgrey;
+    .table-row {
+        height: 5.6rem;
+        &:last-child {
+            margin-bottom: 0rem;
+        }
+    }
+}
+
+.elements-info {
+    box-sizing: border-box;
+    height: 3.6rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: $grey;
+    font-weight: $font-semibold;
+    margin-bottom: -2rem;
+    justify-content: flex-start;
+    padding: 0 2rem;
+}
+
+.pages {
+    height: 3.6rem;
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 1rem;
+    .mat-icon-button:not([disabled]) {
+        .mat-icon:not([disabled]) {
+            color: $accent;
+        }
+    }
+    .mat-icon-button .mat-icon {
+        line-height: 20px;
+    }
+}
+
+.table-footer {
+    @include caption();
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: auto;
+    left: 0;
+    right: 0;
+    min-height: 3.6rem;
+    margin: 0 -2rem;
+    background-color: $lightgrey;
+    .mat-icon-button:not([disabled]) {
+        span {
+            color: $accent !important;
+        }
+        &:hover {
+            background: $accent;
+        }
+    }
+}
+
+.table {
+    display: table;
+    border-collapse: collapse;
+    min-width: 100%;
+}
+
+.header-row {
+    // Scrollbar equivalent
+    // padding-right: 0.7rem;
+}
+
+.table-row {
+    min-width: 100%;
+    padding-left: 3rem;
+    min-height: $normalHeight;
+    height: $normalHeight;
+    box-sizing: border-box;
+    position: relative;
+    border-bottom: 1px solid $lightergrey;
+    .editButton {
+        position: absolute;
+        right: 1rem;
+        height: 100% !important;
+        .mat-icon {
+            font-size: 1.4rem;
+            color: $accent;
+            visibility: hidden;
+        }
+    }
+    &.rowAutoHeight {
+        height: auto;
+        min-height: $normalHeight;
+    }
+    &:last-child {
+        margin-bottom: 1rem;
+    }
+    &:not(.header-row):hover {
+        background-color: accent(500, 0.03);;
+        cursor: pointer;
+        .editButton {
+            .mat-icon {
+                visibility: visible;
+            }
+        }
+    }
+    &.active {
+        background-color: accent(500, 0.03);;
+    }
+    &.selected {
+        background-color: $accent;
+    }
+}
+
+.table-action {
+    box-sizing: border-box;
+    height: 100% !important;
+    padding-bottom: 4px;
+    .mat-icon {
+        color: $accent;
+    }
+}
+
+.body-cell,
+.header-cell {
+    box-sizing: border-box;
+    margin: 0 0.5rem;
+    @include body();
+    color: $primary;
+    text-align: left;
+    div {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    display: flex;
+    align-items: center;
+}
+
+.body-cell.editMode {
+    color: $grey !important;
+}
+
+.body-cell.editable.editMode {
+    overflow: visible !important;
+    font-weight: $font-semibold !important;
+    color: $accent !important;
+}
+
+.header-cell {
+    color: $grey;
+    @include caption();
+    font-weight: $font-semibold;
+    text-transform: uppercase;
+    line-height: 5.6rem;
+    padding-top: 4px;
+    cursor: pointer;
+    .sortingIcon {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        line-height: 18px;
+        height: 18px;
+        opacity: 0;
+        width: 0px;
+        margin-bottom: 4px;
+        transition: all .25s ease;
+        transform: rotate(180deg);
+    }
+    &.active {
+        font-weight: 700;
+        &.desc .sortingIcon {
+            opacity: 1;
+            width: 24px;
+            transform: rotate(180deg);
+        }
+        &.asc .sortingIcon {
+            opacity: 1;
+            width: 24px;
+            transform: rotate(0deg);
+        }
+    }
+}
+
+.checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem!important;
+    max-width: 5rem!important;
+    min-width: 0;
+    margin-top: -2px;
+    margin-left: -2px;
+}

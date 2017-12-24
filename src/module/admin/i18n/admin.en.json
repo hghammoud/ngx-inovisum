@@ -1,0 +1,17 @@
+{
+    "menu": {
+        "button": {
+            "dashboard": "Dashboard",
+            "users": "User Management",
+            "metrics": "Metrics",
+            "health": "Health",
+            "configuration": "Configuration",
+            "audit": "Audits",
+            "logs": "Logs",
+            "api": "API"
+        },
+        "section": {
+            "admin": "Admin menu"
+        }
+    }
+}

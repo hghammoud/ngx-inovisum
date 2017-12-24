@@ -1,0 +1,57 @@
+@import '../../styles/colors';
+@import '../../styles/typo';
+
+.selectInput {
+    cursor: pointer;
+}
+
+$mat-select-arrow-size: 5px !default;
+$mat-select-arrow-margin: 4px !default;
+$mat-select-panel-max-height: 256px !default;
+$mat-select-item-height: 3em !default;
+
+$mat-select-placeholder-arrow-space: 2 * ($mat-select-arrow-size + $mat-select-arrow-margin);
+
+.mat-select-trigger {
+    display: inline-table;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    width: calc(100% + 16px);
+  }
+
+.mat-select-content {
+    border: 1px solid $lightgrey;
+}
+
+.mat-select-arrow-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  right: 15px;
+  width: 15px;
+}
+
+.mat-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: $mat-select-arrow-size solid transparent;
+  border-right: $mat-select-arrow-size solid transparent;
+  border-top: $mat-select-arrow-size solid;
+  margin: 0 $mat-select-arrow-margin;
+}
+
+.mat-option{
+    border-bottom: 1px solid $lightgrey;
+    border-left: 2px solid transparent;
+    &:hover {
+        border-left: 2px solid $accent;
+    }
+    &.mat-active {
+        background-color: transparent;
+        color: $accent;
+    }
+    &.mat-selected {
+        color: $accent;
+    }
+}

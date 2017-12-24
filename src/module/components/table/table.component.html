@@ -1,0 +1,92 @@
+<div class="outer-container" #table>
+    <div class="inner-container">
+        <div fxLayout="column" fxFlex="100%">
+            <div class="table-header" #tableheader id="headerdiv">
+                <div class="table">
+                    <div class="table-row header-row" *ngIf="showHeader" fxLayout="row" fxLayoutAlign="center center">
+                        <div class="header-cell checkbox" *ngIf="multipleSelect">
+                            <mat-checkbox></mat-checkbox>
+                        </div>
+                        <ng-container *ngFor="let cell of columns; let i = index;">
+                            <div fxLayout="row" fxLayoutAlign="{{cell.centerHeader ? 'center' : 'start'}} center" class="header-cell" #headercell [style.width]="cell.minWidth"
+                                [style.min-width]="cell.minWidth" [ngStyle]="getStyle(headercell, cell, i, false)" [hidden]="!cell.show"
+                                [class.active]="cell.active" [class.desc]="cell.sorting === 'desc'" [class.asc]="cell.sorting === 'asc'"
+                                (click)="sort(cell)">
+                                {{cell.name | translate}}
+                                <mat-icon class="sortingIcon" *ngIf="cell.sortable">arrow_upward</mat-icon>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-container" fxLayout="column" style="position: relative">
+                <div class="table-body" id="bodydiv" onscroll="document.getElementById('headerdiv').scrollLeft = this.scrollLeft;">
+                    <div class="table" #tablebody>
+                        <div fxLayout="column" *ngFor="let row of rows">
+                            <div class="table-row" fxLayout="row" (click)="onClick.emit(row)" (dblclick)="onDoubleClick.emit(row)" [class.active]="activeRow && row === activeRow"
+                                [class.selected]="row.checked" [class.rowAutoHeight]="rowAutoHeight">
+                                <div class="body-cell checkbox" *ngIf="multipleSelect">
+                                    <mat-checkbox [(ngModel)]="row.checked" (change)="onChecked.emit(row)"></mat-checkbox>
+                                </div>
+                                <ng-container *ngFor="let cell of columns; let i = index;">
+                                    <div class="body-cell" #bodycell [style.fontWeight]="cell.fontWeight" [style.width]="cell.minWidth" [style.min-width]="cell.minWidth"
+                                        [ngStyle]="getStyle(bodycell, cell, i, true)" [hidden]="!cell.show">
+                                        <!-- Display the column value if no template is specified -->
+                                        <ng-container *ngIf="!cell.template; else cellTemplate">
+                                            {{row.data[cell.key]}}
+                                        </ng-container>
+                                        <!-- Render the column template when specified -->
+                                        <ng-container #cellTemplate *ngTemplateOutlet="cell.template; context: { cell: cell, row: row }">
+                                        </ng-container>
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <div fxLayout="row">
+                                <div *ngIf="activeRow && row === activeRow && activeRowTemplate" [@activeRowAnimation] style="width:100%">
+                                    <ng-container *ngTemplateOutlet="activeRowTemplate; context: { row: row }">
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-footer">
+                <div class="elements-info" *ngIf="page">
+                    Page {{page.currentPage + 1}} of {{page.totalPages}} - Showing ({{page.pageElements * (page.currentPage) + 1}} - {{ page.pageElements
+                    * (page.currentPage + 1)}}) of {{page.totalElements}} results
+                </div>
+                <div class="elements-info" *ngIf="!page && rows.length > 0">
+                    Showing {{rows.length}} results
+                </div>
+                <div class="pages" *ngIf="page">
+                    <button mat-icon-button disabled="{{page.currentPage - 1 >= 0 ? false: true}}" (click)="onPageChange.emit(0)">
+                        <mat-icon>skip_previous</mat-icon>
+                    </button>
+                    <button mat-icon-button disabled="{{page.currentPage - 1 >= 0 ? false: true}}" (click)="onPageChange.emit(page.currentPage-1)">
+                        <mat-icon>chevron_left</mat-icon>
+                    </button>
+                    <ng-container *ngFor="let i of [3,2,1]">
+                        <button mat-icon-button *ngIf="page.currentPage - i >= 0" (click)="onPageChange.emit(page.currentPage-i)">
+                            <span class="text-icon">{{page.currentPage-i+1}}</span>
+                        </button>
+                    </ng-container>
+                    <button mat-icon-button disabled>
+                        <span class="text-icon">{{page.currentPage+1}}</span>
+                    </button>
+                    <ng-container *ngFor="let i of [1,2,3]">
+                        <button mat-icon-button *ngIf="page.currentPage + i < page.totalPages" (click)="onPageChange.emit(page.currentPage+i)">
+                                <span class="text-icon">{{page.currentPage+i+1}}</span>
+                            </button>
+                    </ng-container>
+                    <button mat-icon-button disabled="{{page.currentPage + 1 < page.totalPages ? false : true}}" (click)="onPageChange.emit(page.currentPage+1)">
+                        <mat-icon>chevron_right</mat-icon>
+                    </button>
+                    <button mat-icon-button disabled="{{page.currentPage + 1 < page.totalPages ? false : true}}" (click)="onPageChange.emit(page.totalPages-1)">
+                        <mat-icon>skip_next</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

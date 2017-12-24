@@ -360,6 +360,9 @@ gulp.task('rollup-bundle', (cb) => {
       '@angular/router': 'ng.router',
       '@angular/platform-browser-dynamic': 'ng.platform-browser-dynamic',
       '@angular/platform-browser': 'ng.platform-browser',
+      '@angular/cdk': 'ng.cdk',
+      '@angular/material': 'ng.material',
+      '@angular/animation': 'ng.animation',
 
       // Rxjs dependencies
       'rxjs/Subject': 'Rx',
@@ -385,6 +388,9 @@ gulp.task('rollup-bundle', (cb) => {
       // ATTENTION:
       // Add any other dependency or peer dependency of your library here
       // This is required for UMD bundle users.
+      'lodash': 'lodash',
+      'highcharts': 'highcharts',
+      'ng-click-outside': 'ng-click-outside',
       
     };
     const rollupBaseConfig = {

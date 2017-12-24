@@ -1,0 +1,10 @@
+<ino-button color="accent" [dropDownTriggerFor]="languageDropdown" [fillContainer]=true>
+    <span button-left-icon class="flag-icon flag-icon-{{selected?.icon}} flag-icon-squared"></span>
+    <span button-label>{{selected?.name}}</span>
+</ino-button>
+<ino-dropdown #languageDropdown>
+    <ino-dropdown-item *ngFor="let language of languages" (click)="changeLanguage(language)">
+        <span button-left-icon class="flag-icon flag-icon-{{language.icon}} flag-icon-squared"></span>
+        <span button-label>{{language.name}}</span>
+    </ino-dropdown-item>
+</ino-dropdown>

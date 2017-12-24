@@ -1,0 +1,58 @@
+$font-family: 'Proxima';
+$font-bold: 600;
+$font-semibold: 500;
+$font-normal: 400;
+$font-light: 300;
+
+@font-face {
+	font-family: 'Proxima';
+	font-weight: $font-light;
+    src: url(/assets/fonts/proxima-nova/proximanova-light-webfont.ttf) format('truetype')}
+@font-face {
+	font-family: 'Proxima';
+	font-weight: $font-normal;
+	src: url(/assets/fonts/proxima-nova/proximanova-regular-webfont.ttf) format('truetype')
+}
+@font-face {
+	font-family: 'Proxima';
+	font-style: italic;
+	font-weight: $font-normal;
+	src: url(/assets/fonts/proxima-nova/proximanova-regularitalic-webfont.ttf) format('truetype')}
+@font-face {
+	font-family: 'Proxima';
+	font-weight: $font-semibold;
+    src: url(/assets/fonts/proxima-nova/proximanova-semibold-webfont.ttf) format('truetype')}
+@font-face {
+	font-family: 'Proxima';
+	font-weight: $font-semibold;
+	font-style: italic;
+    src: url(/assets/fonts/proxima-nova/proximanova-semibolditalic-webfont.ttf) format('truetype')}
+@font-face {
+	font-family: 'Proxima';
+	font-weight: $font-bold;
+    src: url(/assets/fonts/proxima-nova/proximanova-bold-webfont.ttf) format('truetype')}
+@font-face {
+	font-family: 'Proxima';
+	font-weight: $font-bold;
+	font-style: italic;
+    src: url(/assets/fonts/proxima-nova/proximanova-boldit-webfont.ttf) format('truetype')}
+
+@mixin font {
+    font-family: $font-family;
+}
+@mixin h4 {
+    @include font;
+    font-size: 2.1rem;
+}
+@mixin h5 {
+    @include font;
+    font-size: 1.8rem;
+}
+@mixin body {
+    @include font;
+    font-size: 1.4rem;
+}
+@mixin caption {
+    @include font;
+    font-size: 1.2rem;
+}

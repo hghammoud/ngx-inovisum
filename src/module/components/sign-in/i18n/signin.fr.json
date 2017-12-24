@@ -1,0 +1,21 @@
+{
+    "signin": {
+        "title": "Authentification",
+        "forgottitle": "Resetter le mot de passe",
+        "form": {
+            "password": "Mot de passe",
+            "password.placeholder": "Votre mot de passe",
+            "rememberme": "Sauvegarder ma session",
+            "button.signin": "Connexion",
+            "button.reset": "Resetter",
+            "cancel": "Annuler",
+            "forgot": "Avez-vous oublié votre mot de passe ?"
+        },
+        "messages": {
+            "error": {
+                "authentication": "<strong>Erreur d'authentification !</strong> Veuillez vérifier vos identifiants de connexion."
+            }
+        }
+    },
+    "email address not registered": "Adresse mail non enregistrée"
+}

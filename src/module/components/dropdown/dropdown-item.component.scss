@@ -1,0 +1,26 @@
+@import '../../styles/colors';
+@import '../../styles/typo';
+:host {
+    height: 4rem;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+    border-bottom: 1px solid $lightgrey;
+    border-left: 2px solid transparent;
+    text-align: left;
+    font-weight: 400;
+    color: $primary;
+    position: relative;
+    display: flex;
+    &:hover {
+        border-left: 2px solid $accent;
+    }
+    .container {
+        width: 100%;
+        ::ng-deep [button-label]{
+            color: $primary;
+            font-weight: 400;
+        }
+    }
+    
+}

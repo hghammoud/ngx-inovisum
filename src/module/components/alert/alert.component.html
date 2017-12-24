@@ -1,0 +1,15 @@
+<div [ngClass]="type" class="container" fxFlex>
+    <span fxLayout="row" fxFlexFill fxLayoutAlign="start center">
+        <span fxLayout="column" fxFlexFill fxLayoutAlign="center start">
+            <span *ngIf="title" class="title" [innerHTML]="title"></span>
+            <span *ngIf="message" class="message" fxFlex [innerHTML]="message"></span>
+        </span>
+        <button *ngIf="removable" (click)="remove()" class="toast-close-button">
+                    &times;
+                    <!-- <div class="counter">
+                            <md-progress-spinner [color]="'warn'" [mode]="'determinate'" [value]="alert.counter">
+                            </md-progress-spinner>
+                        </div> -->
+            </button>
+    </span>
+</div>

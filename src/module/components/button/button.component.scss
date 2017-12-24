@@ -1,0 +1,45 @@
+@import '../../styles/colors';
+@import '../../styles/typo';
+.button {
+    @include body();
+    font-weight: bold;
+    height: 4rem;
+    padding: 0 1.6rem;
+    cursor: pointer;
+     ::ng-deep .mat-button-wrapper {
+        width: 100%;
+        text-align: left;
+    }
+     ::ng-deep [button-left-icon] {
+         margin-right: 1.6rem;
+    }
+     ::ng-deep [button-label] {
+        word-wrap: break-word;
+        line-height: 1.5rem;
+        width: calc(100% - 5rem);
+        display: inline-block;
+    }
+    &.wrap {
+         ::ng-deep [button-label] {
+            white-space: normal;
+        }
+    }
+}
+
+.fillContainer {
+    min-width: 100%;
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.fillWidth {
+    min-width: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.mat-ripple {
+    opacity: 0.4;
+}

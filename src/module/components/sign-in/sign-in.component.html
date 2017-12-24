@@ -1,0 +1,75 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div *ngIf="!forgotPassword" fxFlex fxLayout="column">
+    <div class="header-row" fxLayoutAlign="start center">
+        <div class="header-title"> {{'signin.title' | translate}}</div>
+    </div>
+    <form [formGroup]="signinForm" fxLayout="column">
+        <div class="content-holder" fxLayoutAlign="center">
+            <div fxLayout="column" fxFlexFill fxLayoutAlign="start start">
+                <mat-form-field fxFill class="field-row" dividerColor="accent">
+                    <input matInput placeholder="{{'global.form.username.placeholder' | translate}}" [formControl]="usernameFormControl">
+                    <mat-error *ngIf="usernameFormControl.hasError('required')">
+                        <span [innerHTML]="'global.messages.validate.required' | translate"> Required</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field fxFill class="field-row" dividerColor="accent">
+                    <input matInput placeholder="{{'signin.form.password.placeholder' | translate}}" type="password" [formControl]="passwordFormControl">
+                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                        <span [innerHTML]="'global.messages.validate.required' | translate"> Required</span>
+                    </mat-error>
+                </mat-form-field>
+                <div fxLayout="row" fxLayoutAlign="start center" class="checkbox-row">
+                    <mat-checkbox [formControl]="remembermeControl" color="accent">{{'signin.form.rememberme' | translate}}</mat-checkbox>
+                </div>
+                <div class="forgot" (click)="forgotPassword = true">{{'signin.form.forgot' | translate}}</div>
+                <ino-alert *ngIf="formError" [type]="'error'" [message]="'signin.messages.error.authentication' | translate"></ino-alert>
+                <ino-alert-listener prefix="http:error"></ino-alert-listener>
+            </div>
+        </div>
+        <div class="action-container" fxLayout="row" fxLayoutAlign="center center">
+            <button mat-raised-button color="accent" [disabled]="!signinForm.valid" (click)="signIn()"> 
+                <div *ngIf="!loading">{{'signin.form.button.signin' | translate}}</div>
+                <div *ngIf="loading"> 
+                    <div fxLayout="row">
+                        <div class="light-button-spinner"></div>
+                        <div>{{'global.form.button.load' | translate}}</div>
+                    </div>
+                </div>
+            </button>
+            <button fxFlexOffset="10" mat-button *ngIf="dialogRef" color="accent" (click)="dialogRef.close()">{{'signin.form.cancel' | translate}}</button>
+        </div>
+    </form>
+</div>
+<div *ngIf="forgotPassword" fxFlex fxLayout="column">
+    <div class="header-row" fxLayoutAlign="start center">
+        <div class="header-title"> {{'signin.forgottitle' | translate}}</div>
+    </div>
+    <form [formGroup]="resetForm" fxLayout="column">
+        <div class="content-holder" fxLayoutAlign="center start">
+            <div fxLayout="column" fxFill fxLayoutAlign="center start">
+                <mat-form-field fxFill class="field-row" dividerColor="accent">
+                    <input matInput placeholder="{{'global.form.email.placeholder' | translate}}" [formControl]="emailFormControl">
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                        <span [innerHTML]="'global.messages.validate.required' | translate"> Required</span>
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('email')">
+                        <span [innerHTML]="'global.messages.validate.email.invalid' | translate"> Email format</span>
+                    </mat-error>
+                </mat-form-field>
+                <ino-alert-listener prefix="http:error"></ino-alert-listener>
+            </div>
+        </div>
+        <div class="action-container" fxLayout="row" fxLayoutAlign="center center">
+            <button mat-raised-button color="accent" [disabled]="!resetForm.valid" (click)="resetPassword()"> 
+                    <div *ngIf="!loading">{{'signin.form.button.reset' | translate}}</div>
+                    <div *ngIf="loading"> 
+                        <div fxLayout="row">
+                            <div class="light-button-spinner"></div>
+                            <div>{{'global.form.button.load' | translate}}</div>
+                        </div>
+                    </div>
+                </button>
+            <button fxFlexOffset="10" mat-button color="accent" (click)="forgotPassword = false">{{'signin.form.cancel' | translate}}</button>
+        </div>
+    </form>
+</div>

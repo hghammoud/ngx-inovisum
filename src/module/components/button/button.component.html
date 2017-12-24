@@ -1,0 +1,16 @@
+<ng-container *ngTemplateOutlet="!isIconButton ? fullButton : iconButton"></ng-container>
+
+<ng-template #fullButton>
+    <button type="button" mat-button class="button" [disabled]="disabled" color="{{color}}" fxLayout="row" [ngClass]="{'fillContainer' : fillContainer, 'fillWidth' : fillWidth, 'wrap': wrap}"
+        fxLayoutAlign="start center">
+        <ng-content select="[button-left-icon]"></ng-content>
+        <ng-content select="[button-label]"></ng-content>
+        <ng-content select="[button-right-icon]"></ng-content>        
+    </button>
+</ng-template>
+
+<ng-template #iconButton>
+    <button type="button" mat-icon-button color="{{color}}" [disabled]="disabled">
+            <ng-content select="[button-icon]"></ng-content>
+        </button>
+</ng-template>
