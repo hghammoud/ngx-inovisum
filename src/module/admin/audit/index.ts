@@ -1,1 +1,1 @@
-export * from './audit.component';
+export { AdminAuditModule } from './audit.module';

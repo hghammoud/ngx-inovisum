@@ -1,7 +1,7 @@
 import { DialogData } from './dialog';
 import { DialogComponent } from './dialog.component';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { MatDialogRef, MatDialog, MatDialogConfig } from '@angular/material';
 import { Injectable, ViewContainerRef } from '@angular/core';
 

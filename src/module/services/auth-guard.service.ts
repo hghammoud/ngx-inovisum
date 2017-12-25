@@ -1,7 +1,7 @@
-import { DialogService } from './../components/dialog';
+import { DialogService } from './../components/dialog/dialog.service';
+import { SigninComponent } from './../components/sign-in/sign-in.component';
 import { ObjectReducer } from './../store/object.reducer';
 import { Store } from '@ngrx/store';
-import { SigninComponent } from './../components/sign-in';
 import { PrincipalService } from './principal.service';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';

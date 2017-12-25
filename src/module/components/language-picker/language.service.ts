@@ -1,4 +1,4 @@
-import { Language } from './../components/language-picker/language';
+import { Language } from './language';
 import { Injectable } from '@angular/core';
 @Injectable()
 export class LanguageService {

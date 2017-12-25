@@ -1,10 +1,1 @@
-export * from './users';
-export * from './config';
-export * from './audit';
-export * from './api';
-export * from './dashboard';
-export * from './users';
-export * from './metrics';
-export * from './admin.component';
-export * from './admin.routes';
-export * from './admin.module';
+export { AdminModule } from './admin.module';

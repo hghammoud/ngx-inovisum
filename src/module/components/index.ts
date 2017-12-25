@@ -13,4 +13,3 @@ export * from './ino.component';
 export * from './framework-body';
 export * from './framework-denied';
 export * from './framework-no-content';
-export * from './inovisumcomponents.module';

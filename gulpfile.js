@@ -315,17 +315,17 @@ gulp.task('compile', (cb) => {
 
 // Build the 'dist' folder (without publishing it to NPM)
 gulp.task('build', ['clean'], (cb) => {
-  runSequence('compile', 'test', 'npm-package', 'rollup-bundle', cb);
+  runSequence('compile', 'test', 'npm-package', 'rollup-bundle', 'clean:build', cb);
 });
 
 // Same as 'build' but without cleaning temp folders (to avoid breaking demo app, if currently being served)
 gulp.task('build-watch', (cb) => {
-  runSequence('compile', 'test', 'npm-package', 'rollup-bundle', cb);
+  runSequence('compile', 'test', 'npm-package', 'rollup-bundle', 'clean:build',  cb);
 });
 
 // Same as 'build-watch' but without running tests
 gulp.task('build-watch-no-tests', (cb) => {
-  runSequence('compile', 'npm-package', 'rollup-bundle', cb);
+  runSequence('compile', 'npm-package', 'rollup-bundle', 'clean:build',  cb);
 });
 
 // Watch changes on (*.ts, *.html, *.sass) and Re-build library
@@ -388,24 +388,41 @@ gulp.task('rollup-bundle', (cb) => {
       const globals = {
         // Angular dependencies 
         '@angular/core': 'ng.core',
+        '@angular/core/testing': 'ng.core.testing',
         '@angular/common': 'ng.common',
         '@angular/forms': 'ng.forms',
         '@angular/http': 'ng.http',
+        '@angular/common/http': 'ng.common.http',
         '@angular/compiler': 'ng.compiler',
         '@angular/router': 'ng.router',
         '@angular/platform-browser-dynamic': 'ng.platform-browser-dynamic',
         '@angular/platform-browser': 'ng.platform-browser',
+        '@angular/material': 'ng.material',
+        '@angular/cdk': 'ng.cdk',
+        '@angular/cdk/overlay': 'ng.cdk.overlay',
+        '@angular/cdk/collections': 'ng.cdk.collections',
+        '@angular/cdk/portal': 'ng.cdk.portal',
+        '@angular/flex-layout': 'ng.flex-layout',
+        '@angular/animations': 'ng.animations',
 
         // Rxjs dependencies
+        'rxjs/Rx': 'Rx',
         'rxjs/Subject': 'Rx',
         'rxjs/Observable': 'Rx',
+        'rxjs/Subscription': 'Rx',
+        'rxjs/BehaviorSubject': 'Rx',
+        'rxjs/ReplaySubject': 'Rx',
         'rxjs/add/observable/fromEvent': 'Rx.Observable',
         'rxjs/add/observable/forkJoin': 'Rx.Observable',
         'rxjs/add/observable/of': 'Rx.Observable',
         'rxjs/add/observable/merge': 'Rx.Observable',
         'rxjs/add/observable/throw': 'Rx.Observable',
+        'rxjs/add/observable/zip': 'Rx.Observable',
         'rxjs/add/operator/auditTime': 'Rx.Observable.prototype',
         'rxjs/add/operator/toPromise': 'Rx.Observable.prototype',
+        'rxjs/add/operator/distinct': 'Rx.Observable.prototype',
+        'rxjs/add/operator/distinctUntilChanged': 'Rx.Observable.prototype',
+        'rxjs/add/operator/mergeMap': 'Rx.Observable.prototype',
         'rxjs/add/operator/map': 'Rx.Observable.prototype',
         'rxjs/add/operator/filter': 'Rx.Observable.prototype',
         'rxjs/add/operator/do': 'Rx.Observable.prototype',
@@ -416,6 +433,9 @@ gulp.task('rollup-bundle', (cb) => {
         'rxjs/add/operator/first': 'Rx.Observable.prototype',
         'rxjs/add/operator/startWith': 'Rx.Observable.prototype',
         'rxjs/add/operator/switchMap': 'Rx.Observable.prototype',
+        'rxjs/add/operator/debounceTime': 'Rx.Observable.prototype',
+        'rxjs/add/operator/zip': 'Rx.Observable.prototype',
+        'rxjs/add/operator/take': 'Rx.Observable.prototype',
 
         // ATTENTION:
         // Add any other dependency or peer dependency of your library here
@@ -425,10 +445,6 @@ gulp.task('rollup-bundle', (cb) => {
         'highcharts': 'highcharts',
         'highcharts-more': 'highcharts-more',
         'angular-highcharts': 'angular-highcharts',
-        '@angular/material': 'ng.material',
-        '@angular/cdk': 'ng.cdk',
-        '@angular/flex-layout': 'ng.flex-layout',
-        '@angular/animation': 'ng.animation',
         '@ngrx/store': '@ngrx/store',
         '@ngx-translate/core': '@ngx-translate/core',
         '@ngx-translate/http-loader': '@ngx-translate/http-loader',

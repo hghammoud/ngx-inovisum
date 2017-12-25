@@ -1,1 +1,1 @@
-export * from './dashboard.component';
+export { AdminDashboardModule } from './dashboard.module';

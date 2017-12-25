@@ -1,3 +1,3 @@
-export * from './dialog.component';
-export * from './dialog';
-export * from './dialog.service';
+export { DialogModule } from './dialog.module';
+export { DialogComponent } from './dialog.component';
+export { DialogService } from './dialog.service';

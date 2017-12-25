@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { ToastMessage } from './../notification/notification.service';
 import { ToastrService } from 'ngx-toastr';
 import { Injectable, EventEmitter } from '@angular/core';

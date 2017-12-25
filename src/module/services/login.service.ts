@@ -1,7 +1,8 @@
 import { PrincipalService } from './principal.service';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { AuthAbstractService } from './auth.service';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class LoginService {

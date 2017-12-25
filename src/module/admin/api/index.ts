@@ -1,1 +1,1 @@
-export * from './api.component';
+export { AdminApiModule } from './api.module';

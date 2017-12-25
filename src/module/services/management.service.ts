@@ -2,11 +2,11 @@ import { createRequestOption } from './../shared/request-utils';
 import { PageableSearchQuery } from './pagination';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ManagementService {
-    public API_URL = 'http://192.168.2.112:8080/';
+    public API_URL = 'http://192.168.0.23:8080/';
     private metricsUrl = this.API_URL + 'management/metrics';
     private configUrl = this.API_URL + 'management/configprops';
     private envUrl = this.API_URL + 'management/env';

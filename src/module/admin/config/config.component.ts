@@ -1,11 +1,14 @@
 import { Subject } from 'rxjs/Subject';
 import { HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { ManagementService } from './../../services/management.service';
 import { merge } from 'rxjs/observable/merge';
 import { Component, OnInit, TemplateRef, ViewChild, EventEmitter } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import * as _ from 'lodash';
+import 'rxjs/add/observable/zip';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
     selector: 'ino-admin-config',
@@ -40,7 +43,6 @@ export class ConfigComponent implements OnInit {
 
     public ngOnInit() {
         this.loadConfig();
-
         // Implementing filter logic
         this.term$.debounceTime(400)
             .filter((term) => term.length >= 0)
@@ -89,8 +91,8 @@ export class ConfigComponent implements OnInit {
     }
 
     private loadConfig() {
-        const obs: Observable<Array<HttpResponse<string>>> = Observable
-            .zip(this.managementService.getConfig(), this.managementService.getEnvConfig());
+        const obs: Observable<Array<HttpResponse<string>>> =
+            Observable.zip(this.managementService.getConfig(), this.managementService.getEnvConfig());
         obs.subscribe((result) => {
             const config = _.map(result[0].body, (value: any, key) => {
                 return _.reduce(value.properties, (o, v, p) => {

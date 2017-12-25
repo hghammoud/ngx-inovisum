@@ -1,1 +1,1 @@
-export * from './tag.component';
+export { TagModule } from './tag.module';

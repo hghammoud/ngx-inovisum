@@ -2,7 +2,7 @@ import { UserDTO } from './../typings/jhipster';
 import { UserIdentity } from './user-identity';
 import { Response } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Injectable()

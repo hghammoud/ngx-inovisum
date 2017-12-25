@@ -3,12 +3,13 @@ import { Page, PageableSearchQuery, Sort } from './../../services/pagination';
 import { createPageableSearchQuery, extractPage } from './../../shared/request-utils';
 import { Subject } from 'rxjs/Subject';
 import { HttpResponse, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { ManagementService } from './../../services/management.service';
 import { merge } from 'rxjs/observable/merge';
 import { Component, OnInit, TemplateRef, ViewChild, EventEmitter } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import * as _ from 'lodash';
+import 'rxjs/add/operator/first';
 
 @Component({
     selector: 'ino-admin-audit',

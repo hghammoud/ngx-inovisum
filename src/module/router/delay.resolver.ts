@@ -1,5 +1,5 @@
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 export class DelayResolver implements Resolve<any> {
   public resolve(route: ActivatedRouteSnapshot): Observable<any> {
     return Observable.create((observer: any) => {

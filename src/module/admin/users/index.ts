@@ -1,1 +1,1 @@
-export * from './users.component';
+export { AdminUsersModule } from './users.module';

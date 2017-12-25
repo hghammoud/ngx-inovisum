@@ -1,4 +1,4 @@
-import { LanguageService } from './../../services/language.service';
+import { LanguageService } from './language.service';
 import { DropdownComponent } from './../dropdown/dropdown.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from './language';

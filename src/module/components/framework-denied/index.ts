@@ -1,2 +1,1 @@
-export * from './framework-denied.component';
-export * from './denied.routes';
+export { FrameworkDeniedModule } from './framework-denied.module';

@@ -7,10 +7,10 @@ import {
     OnInit, Output, EventEmitter, HostBinding, ViewEncapsulation
 } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-import { MatSelect } from '@angular/material';
-import { fadeInContent, transformPanel } from '@angular/material/';
-import { MatFormField, MatFormFieldControl } from '@angular/material/form-field';
-import { MAT_OPTION_PARENT_COMPONENT } from '@angular/material/core';
+import {
+    MatSelect, fadeInContent,
+    transformPanel, MatFormField, MatFormFieldControl, MAT_OPTION_PARENT_COMPONENT
+} from '@angular/material';
 import {
     animate,
     AnimationTriggerMetadata,

@@ -1,1 +1,1 @@
-export * from './leftmenu.component';
+export { LeftMenuModule } from './leftmenu.module';

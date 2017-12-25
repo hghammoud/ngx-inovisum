@@ -1,6 +1,11 @@
+import { Observable } from 'rxjs/Observable';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Subject } from 'rxjs/Subject';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs/Rx';
 import * as _ from 'lodash';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/distinct';
 
 const star = '*';
 const twoStars = '**';

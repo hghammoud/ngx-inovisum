@@ -3,7 +3,7 @@ import { NotificationService } from './../notification/notification.service';
 import { AlertService, AlertMessage } from './alert.service';
 import { AlertComponent } from './alert.component';
 import { InoComponent } from './../ino.component';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { ISubscription } from 'rxjs/Subscription';
 import { Component, Input, OnInit, Injectable, EventEmitter } from '@angular/core';
 import * as _ from 'lodash';

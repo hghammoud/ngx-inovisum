@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { TranslateService } from '@ngx-translate/core';
 import { InoComponent } from './../components/ino.component';
 import { LeftMenuComponent } from './../components/leftmenu/leftmenu.component';

@@ -1,1 +1,1 @@
-export * from './config.component';
+export { AdminConfigModule } from './config.module';

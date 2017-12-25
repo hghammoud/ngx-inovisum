@@ -1,12 +1,12 @@
+import { LanguageService } from './../../components/language-picker/language.service';
 import { HttpParams } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { NotificationService } from './../../components/notification/notification.service';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { AlertService } from './../../components/alert/alert.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { RolesService } from './../../services/roles.service';
 import { Language } from './../../components/language-picker/language';
-import { LanguageService } from './../../services/language.service';
 import { Page, PageableSearchQuery, Sort } from './../../services/pagination';
 import { User, UserDTO } from './../../typings/jhipster';
 import { createPageableSearchQuery, extractPage } from './../../shared/request-utils';
@@ -15,6 +15,7 @@ import { AuthAbstractService } from './../../services/auth.service';
 import { TableColumn, TableSortAction } from './../../components/table/table';
 import { Component, OnInit, TemplateRef, ViewChild, EventEmitter } from '@angular/core';
 import * as _ from 'lodash';
+import 'rxjs/add/operator/first';
 
 @Component({
     selector: 'ino-admin-users',

@@ -38,14 +38,14 @@ export const ADMIN_ROUTES: Routes = [
           title: 'menu.button.metrics'
         }
       },
-      // {
-      //   path: 'users',
-      //   component: UsersComponent,
-      //   pathMatch: 'full',
-      //   data: {
-      //     title: 'menu.button.users'
-      //   }
-      // },
+      {
+        path: 'users',
+        component: UsersComponent,
+        pathMatch: 'full',
+        data: {
+          title: 'menu.button.users'
+        }
+      },
       {
         path: 'configuration',
         component: ConfigComponent,

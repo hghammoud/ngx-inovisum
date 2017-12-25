@@ -1,1 +1,1 @@
-export * from './framework-body.component';
+export { FrameworkBodyModule } from './framework-body.module';

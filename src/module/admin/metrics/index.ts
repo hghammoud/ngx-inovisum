@@ -1,1 +1,1 @@
-export * from './metrics.component';
+export { AdminMetricsModule } from './metrics.module';

@@ -1,7 +1,7 @@
+import { Page } from './../../services/pagination';
 import { Subject } from 'rxjs/Subject';
 import { InoComponent } from './../ino.component';
 import { TableColumn, TableAction, TableSortAction, TableRow } from './table';
-import { Page } from './../../';
 import { RadioService } from './../../services/radio.service';
 import {
     Component, OnInit, Input, EventEmitter, Output, OnChanges,
